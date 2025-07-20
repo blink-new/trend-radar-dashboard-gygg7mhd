@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels';
 import { RadarChart } from './components/RadarChart';
+import { MatrixChart } from './components/MatrixChart';
 import { Sidebar } from './components/Sidebar';
 import { TrendDetail } from './components/TrendDetail';
 import { mockTrends } from './data/trends';
@@ -133,9 +134,13 @@ function App() {
                   )}
                 </div>
               ) : (
-                <div className="text-center text-muted-foreground">
-                  <h3 className="text-lg font-medium mb-2">Matrix View</h3>
-                  <p className="text-sm">Coming soon - Alternative visualization format</p>
+                <div className="relative">
+                  <MatrixChart
+                    trends={filteredTrends}
+                    selectedTrend={selectedTrend}
+                    onTrendSelect={handleTrendSelect}
+                    size={600}
+                  />
                 </div>
               )}
             </div>
